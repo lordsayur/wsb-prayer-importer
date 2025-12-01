@@ -1,9 +1,13 @@
-const masihiMonth = prompt("Specify masihi month as number") || 9;
-const masihiYear = prompt("Specify masihi year as number") || 2025;
-const hijriMonth1 = prompt("Specify first hijri month as text") || "Rabiulawal";
-const hijriMonth2 = prompt("Specify second hijri month as text") ||
+console.log("All arguments:", Deno.args);
+const args: string[] = Deno.args;
+
+const today = new Date()
+const masihiMonth = args[0] || prompt(`Specify masihi month as number (e.g. ${today.getMonth() + 2}): `) || 9;
+const masihiYear = args[1] || prompt(`Specify masihi year as number (e.g. ${today.getFullYear()}): `) || 2025;
+const hijriMonth1 = args[2] || prompt("Specify first hijri month as text (e.g. Rabiulawal): ") || "Rabiulawal";
+const hijriMonth2 = args[3] || prompt("Specify second hijri month as text (e.g. Rabiulakhir): ") ||
   "Rabiulakhir";
-const hijriYear = prompt("Specify hijri year as number") || "1447";
+const hijriYear = args[4] || prompt("Specify hijri year as number (e.g. 1447): ") || "1447";
 
 const content = await Deno.readTextFile("./prayer-data/prayer_times.txt");
 // console.log(content);
